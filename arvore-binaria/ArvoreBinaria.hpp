@@ -8,7 +8,8 @@ class ArvoreBinaria
 private:
     NoArvoreBinaria* raiz;
 
-    bool pertence(NoArvoreBinaria no, int info);
+    bool pertence(NoArvoreBinaria* no, int info);
+    int pares(NoArvoreBinaria* no);
 
 public:
     ArvoreBinaria();
