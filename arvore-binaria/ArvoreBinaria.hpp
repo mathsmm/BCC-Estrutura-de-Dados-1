@@ -10,10 +10,16 @@ private:
 
     bool pertence(NoArvoreBinaria* no, int info);
     int pares(NoArvoreBinaria* no);
+    int folhas(NoArvoreBinaria* no);
+    string preOrdem(NoArvoreBinaria* no);
+    string emOrdem(NoArvoreBinaria* no);
+    string posOrdem(NoArvoreBinaria* no);
+    int numNos(NoArvoreBinaria* no);
+    int altura(NoArvoreBinaria* no);
 
 public:
     ArvoreBinaria();
-    
+
     NoArvoreBinaria* insere(int v, NoArvoreBinaria* esq, NoArvoreBinaria* dir);
     bool vazia();
     bool pertence(int info);

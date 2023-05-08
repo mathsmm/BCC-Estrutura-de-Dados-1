@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.dll": "pascal",
+        "string_view": "cpp",
+        "iostream": "cpp"
+    }
+}
