@@ -40,8 +40,31 @@ int main()
 
     cout << "Quantidade de pares: " << arvore->pares() << endl;
     cout << "Numero de folhas: " << arvore->folhas() << endl;
-    cout << "Numero de nos: " << arvore->numNos() << endl;
+    cout << "Numero de nos (sem contar as folhas): " << arvore->numNos() << endl;
     cout << "Altura da arvore: " << arvore->altura() << endl;
+    cout << "\n";
+
+    NoArvoreBinaria* f10 = new NoArvoreBinaria(1);
+    NoArvoreBinaria* f20 = new NoArvoreBinaria(2);
+    NoArvoreBinaria* f30 = new NoArvoreBinaria(3);
+    NoArvoreBinaria* f40 = new NoArvoreBinaria(4);
+    NoArvoreBinaria* f50 = new NoArvoreBinaria(5);
+    NoArvoreBinaria* n10 = new NoArvoreBinaria(6, f10, f20);
+    NoArvoreBinaria* n20 = new NoArvoreBinaria(7, f30, f40);
+    NoArvoreBinaria* n30 = new NoArvoreBinaria(8, n10, n20);
+    ArvoreBinaria* arvore2 = new ArvoreBinaria();
+    arvore2->insere(9, f50, n30);
+    
+    cout << "Arvore 1: " << arvore->preOrdem()  << endl;
+    cout << "Arvore 2: " << arvore2->preOrdem() << endl;
+    cout << "Arvore 1 eh igual a arvore 2? " << arvore->igual(arvore2) << endl;
+    cout << "\n";
+
+    arvore2->insere(10, arvore2->getRaiz(), nullptr);
+
+    cout << "Arvore 1: " << arvore->preOrdem()  << endl;
+    cout << "Arvore 2: " << arvore2->preOrdem() << endl;
+    cout << "Depois de alterar a arvore 2, continuam iguais? " << arvore->igual(arvore2) << endl;
 
     return 0;
 }

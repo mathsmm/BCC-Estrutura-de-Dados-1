@@ -7,6 +7,11 @@ ArvoreBinaria::ArvoreBinaria():
     raiz{nullptr}
 {}
 
+NoArvoreBinaria* ArvoreBinaria::getRaiz()
+{
+    return raiz;
+}
+
 NoArvoreBinaria* ArvoreBinaria::insere(int v, NoArvoreBinaria* esq, NoArvoreBinaria* dir)
 {
     NoArvoreBinaria* novoNo = new NoArvoreBinaria(v, esq, dir);
@@ -30,14 +35,12 @@ bool ArvoreBinaria::pertence(NoArvoreBinaria* no, int info)
     {
         return false;
     }
-    else
-    {
-        return (
-            (no->getInfo()      == info) || 
-            pertence(no->getSae(), info) || 
-            pertence(no->getSad(), info)
-        );
-    }
+
+    return (
+        (no->getInfo()      == info) || 
+        pertence(no->getSae(), info) || 
+        pertence(no->getSad(), info)
+    );
 }
 
 int ArvoreBinaria::pares()
@@ -51,13 +54,11 @@ int ArvoreBinaria::pares(NoArvoreBinaria* no)
     {
         return 0;
     }
-    else
-    {
-        return 
-            ((no->getInfo() % 2) == 0)
-            ? 1 + pares(no->getSae()) + pares(no->getSad())
-            : 0 + pares(no->getSae()) + pares(no->getSad());
-    }
+
+    return 
+        ((no->getInfo() % 2) == 0)
+        ? 1 + pares(no->getSae()) + pares(no->getSad())
+        : 0 + pares(no->getSae()) + pares(no->getSad());
 }
 
 int ArvoreBinaria::folhas()
@@ -71,13 +72,11 @@ int ArvoreBinaria::folhas(NoArvoreBinaria* no)
     {
         return 0;
     }
-    else
-    {
-        return 
-            ((no->getSae() == nullptr) && (no->getSad() == nullptr))
-            ? 1
-            : folhas(no->getSae()) + folhas(no->getSad());
-    }
+
+    return 
+        ((no->getSae() == nullptr) && (no->getSad() == nullptr))
+        ? 1
+        : folhas(no->getSae()) + folhas(no->getSad());
 }
 
 string ArvoreBinaria::preOrdem()
@@ -148,13 +147,11 @@ int ArvoreBinaria::numNos(NoArvoreBinaria* no)
     {
         return 0;
     }
-    else
-    {
-        return
-            ((no->getSae() != nullptr) || (no->getSad() != nullptr))
-            ? 1 + numNos(no->getSae()) + numNos(no->getSad())
-            : 0; //folha
-    }
+
+    return
+        ((no->getSae() != nullptr) || (no->getSad() != nullptr))
+        ? 1 + numNos(no->getSae()) + numNos(no->getSad())
+        : 0; //folha
 }
 
 int ArvoreBinaria::altura()
@@ -168,8 +165,26 @@ int ArvoreBinaria::altura(NoArvoreBinaria* no)
     {
         return 0;
     }
-    else
-    {
-        return 1 + std::max(altura(no->getSae()), altura(no->getSad()));
+
+    return 1 + std::max(altura(no->getSae()), altura(no->getSad()));
+}
+
+bool ArvoreBinaria::igual(ArvoreBinaria* a) {
+    return igual(raiz, a->raiz);
+}
+
+bool ArvoreBinaria::igual(NoArvoreBinaria* no1, NoArvoreBinaria* no2) {
+    if (no1 == nullptr && no2 == nullptr) {
+        return true;
     }
+
+    if (no1->getInfo() != no2->getInfo()) {
+        return false;
+    }
+
+    if (no1 == nullptr || no2 == nullptr) {
+        return false;
+    }
+
+    return igual(no1->getSae(), no2->getSae()) && igual(no1->getSad(), no2->getSad());
 }
