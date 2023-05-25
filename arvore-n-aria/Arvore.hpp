@@ -9,6 +9,8 @@ private:
     std::string imprime(NoArvore* no);
     bool pertence(NoArvore* no, int info);
     int altura(NoArvore* no);
+    int pares(NoArvore* no);
+    int folhas(NoArvore* no);
 
 public:
     Arvore();
@@ -16,9 +18,9 @@ public:
     std::string toString();
     void insereFilho(NoArvore* no, NoArvore* sa);
     bool pertence(int info);
-    int altura();
-    int pares();
-    int folhas();
+    int  altura();
+    int  pares();
+    int  folhas();
     bool igual(Arvore* a);
-    Arvore* copia();
+    // Arvore* copia();
 };
