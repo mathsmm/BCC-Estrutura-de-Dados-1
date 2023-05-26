@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.dll": "pascal",
+        "initializer_list": "cpp",
+        "vector": "cpp",
+        "iostream": "cpp"
+    }
+}
